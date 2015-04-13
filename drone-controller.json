@@ -1,0 +1,37 @@
+{
+	"kind":"ReplicationController",
+	"apiVersion":"v1beta3",
+	"metadata":{
+		"name":"drone",
+		"labels":{
+			"name":"drone"
+		}
+	},
+	"spec":{
+		"replicas":2,
+		"selector":{
+			"name":"drone"
+		},
+		"template":{
+			"metadata":{
+				"labels":{
+					"name":"drone"
+				}
+			},
+			"spec":{
+				"containers":[
+					{
+						"name":"drone",
+						"image":"mattgruter/drone",
+						"ports":[
+							{
+								"containerPort":80,
+								"protocol":"TCP"
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}
